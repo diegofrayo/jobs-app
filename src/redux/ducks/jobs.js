@@ -13,7 +13,7 @@ const FETCH_JOBS_FAIL = duck.defineType('FETCH_JOBS_FAIL');
 // actions
 const fetchJobsSuccess = duck.createAction(FETCH_JOBS_SUCCESS);
 const fetchJobsFail = duck.createAction(FETCH_JOBS_FAIL);
-export const fetchJobs = query => async (dispatch) => {
+export const fetchJobs = query => async dispatch => {
   try {
     const jobs = await http.post('/jobs', { query });
     dispatch(fetchJobsSuccess(jobs));

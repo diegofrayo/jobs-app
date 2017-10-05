@@ -14,7 +14,7 @@ import SettingsScreen from './SettingsScreen';
 import store from './../redux';
 
 // styles
-import createStylesheet from './../styles/createStylesheet';
+import createStylesheet, { theme } from './../styles/createStylesheet';
 
 const stylesheet = createStylesheet(() => ({
   viewContainer: {
@@ -38,20 +38,19 @@ export default class App extends React.Component {
           },
           {
             tabBarPosition: 'bottom',
-            swipeEnabled: false,
-            lazy: true, // Each screen will not mount/load until user clicks on them
-            animationEnabled: false,
+            swipeEnabled: true,
+            lazy: true,
+            animationEnabled: true,
             tabBarOptions: {
-              showIcon: true,
-              labelStyle: { fontSize: 12, top: -10 },
-              iconStyle: {
-                width: 22,
-                height: 22,
-                top: -5,
+              activeTintColor: '#AAAAAA',
+              activeBackgroundColor: '#000000',
+              inactiveTintColor: '#CCCCCC',
+              inactiveBackgroundColor: '#333333',
+              labelStyle: {
+                fontSize: 12,
               },
               style: {
-                height: 50,
-                backgroundColor: '#009688',
+                backgroundColor: 'blue',
               },
             },
           },
@@ -59,11 +58,22 @@ export default class App extends React.Component {
       },
     },
     {
-      navigationOptions: { tabBarVisible: false },
       tabBarPosition: 'bottom',
-      swipeEnabled: false,
+      swipeEnabled: true,
       lazy: true,
-      animationEnabled: false,
+      animationEnabled: true,
+      tabBarOptions: {
+        activeTintColor: '#000000',
+        activeBackgroundColor: '#000000',
+        inactiveTintColor: '#000000',
+        inactiveBackgroundColor: '#000000',
+        labelStyle: {
+          fontSize: 12,
+        },
+        style: {
+          backgroundColor: 'blue',
+        },
+      },
     },
   );
 

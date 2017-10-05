@@ -1,5 +1,5 @@
 // constants
-const API_URL = 'http://localhost:7777';
+const API_URL = 'http://192.168.1.11:7777';
 
 class HTTP {
   static headers() {

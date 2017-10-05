@@ -34,6 +34,7 @@
     "url": "git+https://github.com/hey-dev/jobs-app.git"
   },
   "scripts": {
+    "start": "exp start --lan --dev",
     "publish": "exp publish",
     "lint": "esw -w -c .eslintrc src/**/*.js"
   },
@@ -54,8 +55,10 @@
     "babel-eslint": "^8.0.1",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^6.10.3",
     "eslint-watch": "^3.1.2"
   },

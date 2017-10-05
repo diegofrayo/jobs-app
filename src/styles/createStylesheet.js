@@ -1,5 +1,9 @@
 import { StyleSheet } from 'react-native';
 
-const theme = {};
+export const theme = {
+  spacing: 8,
+  tabsHeight: 50,
+  colors: {},
+};
 
 export default fn => StyleSheet.create(fn(theme));
