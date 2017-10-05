@@ -1,14 +1,44 @@
 {
-  "name": "jobs",
-  "version": "0.0.0",
-  "description": "Hello Expo!",
-  "author": null,
-  "private": true,
+  "name": "jobs-app",
+  "version": "0.0.1",
+  "description": "React Native app for finding jobs in Armenia, Quindío, Colombia",
+  "keywords": [
+    "react",
+    "react native",
+    "expo"
+  ],
+  "homepage": "https://github.com/hey-dev/jobs-app#readme",
+  "bugs": {
+    "email": "workspace.armenia@gmail.com",
+    "url": "https://github.com/hey-dev/jobs-app/issues"
+  },
+  "license": "ISC",
+  "author": {
+    "name": "Alejandro Baez",
+    "email": "nativo.alejandro@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Alejandro Baez",
+      "email": "nativo.alejandro@gmail.com"
+    },
+    {
+      "name": "Diego Rayo",
+      "email": "diegofrayo@gmail.com",
+      "url": "http://diegofrayo.com"
+    }
+  ],
   "main": "node_modules/expo/AppEntry.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hey-dev/jobs-app.git"
+  },
+  "scripts": {
+    "publish": "exp publish",
+    "lint": "esw -w -c .eslintrc src/**/*.js"
+  },
   "dependencies": {
-    "axios": "^0.16.2",
     "expo": "^20.0.0",
-    "latlng-to-zip": "0.0.1",
     "lodash": "^4.17.4",
     "qs": "^6.5.1",
     "react": "16.0.0-alpha.12",
@@ -17,6 +47,20 @@
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
+    "redux-duck": "^1.0.2",
     "redux-thunk": "^2.2.0"
-  }
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-watch": "^3.1.2"
+  },
+  "engines": {
+    "node": ">=6.11.0"
+  },
+  "private": true
 }

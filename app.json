@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "jobs",
-    "description": "An empty new project",
-    "slug": "jobs",
+    "name": "jobs-app",
+    "description": "React Native app for finding jobs in Armenia, Quindío, Colombia",
+    "slug": "jobs-app",
     "privacy": "public",
     "sdkVersion": "20.0.0",
     "version": "1.0.0",
