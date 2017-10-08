@@ -8,7 +8,10 @@ import createStylesheet from './../styles/createStylesheet';
 
 const stylesheet = createStylesheet(theme => ({
   container: {
+    borderBottomColor: theme.colors.white['500'],
+    borderBottomWidth: 1,
     marginBottom: theme.spacing * 2,
+    paddingBottom: theme.spacing * 2,
   },
   detailsContainer: {
     flex: 1,
@@ -18,6 +21,18 @@ const stylesheet = createStylesheet(theme => ({
     flex: 0,
     minWidth: '50%',
   },
+  title: {
+    fontSize: theme.fontSize.large,
+    fontWeight: theme.fontWeight.bold,
+    marginBottom: theme.spacing,
+  },
+  description: {
+    fontSize: theme.fontSize.medium,
+    marginBottom: theme.spacing,
+  },
+  website: {
+    fontWeight: theme.fontWeight.semibold,
+  },
   pubDate: {
     textAlign: 'right',
   },
@@ -26,8 +41,8 @@ const stylesheet = createStylesheet(theme => ({
 class Job extends React.PureComponent {
   openLink = () => {
     Linking.openURL(this.props.url).catch(err => {
-      console.error('An error occurred', err);
       Alert.alert('Error', 'An error occurred');
+      console.error('An error occurred', err);
     });
   };
 
@@ -35,10 +50,10 @@ class Job extends React.PureComponent {
     const { title, pubDate, description, website } = this.props;
     return (
       <TouchableOpacity onPress={this.openLink} style={stylesheet.container}>
-        <Text>{title}</Text>
-        <Text>{description}</Text>
+        <Text style={stylesheet.title}>{title}</Text>
+        <Text style={stylesheet.description}>{description}</Text>
         <View style={stylesheet.detailsContainer}>
-          <Text style={stylesheet.detailsChild}>{website}</Text>
+          <Text style={[stylesheet.detailsChild, stylesheet.website]}>{website}</Text>
           <Text style={[stylesheet.detailsChild, stylesheet.pubDate]}>{pubDate}</Text>
         </View>
       </TouchableOpacity>

@@ -29,33 +29,9 @@ const stylesheet = createStylesheet(() => ({
 export default class App extends React.Component {
   mainNavigator = TabNavigator(
     {
-      main: {
-        screen: TabNavigator(
-          {
-            jobs: { screen: JobsScreen },
-            likedJobs: { screen: LikedJobsScreen },
-            settings: { screen: SettingsScreen },
-          },
-          {
-            tabBarPosition: 'bottom',
-            swipeEnabled: true,
-            lazy: true,
-            animationEnabled: true,
-            tabBarOptions: {
-              activeTintColor: '#AAAAAA',
-              activeBackgroundColor: '#000000',
-              inactiveTintColor: '#CCCCCC',
-              inactiveBackgroundColor: '#333333',
-              labelStyle: {
-                fontSize: 12,
-              },
-              style: {
-                backgroundColor: 'blue',
-              },
-            },
-          },
-        ),
-      },
+      Home: { screen: JobsScreen },
+      LikedJobs: { screen: LikedJobsScreen },
+      Settings: { screen: SettingsScreen },
     },
     {
       tabBarPosition: 'bottom',
@@ -63,16 +39,18 @@ export default class App extends React.Component {
       lazy: true,
       animationEnabled: true,
       tabBarOptions: {
-        activeTintColor: '#000000',
-        activeBackgroundColor: '#000000',
-        inactiveTintColor: '#000000',
-        inactiveBackgroundColor: '#000000',
-        labelStyle: {
-          fontSize: 12,
-        },
+        activeTintColor: theme.colors.white['200'],
+        activeBackgroundColor: theme.colors.black['100'],
+        inactiveTintColor: theme.colors.white['200'],
+        inactiveBackgroundColor: theme.colors.black['200'],
+        showLabel: true,
         style: {
-          backgroundColor: 'blue',
+          backgroundColor: theme.colors.black['200'],
         },
+        labelStyle: {
+          fontSize: theme.fontSize.normal,
+        },
+        tabStyle: {},
       },
     },
   );

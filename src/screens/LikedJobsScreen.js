@@ -6,17 +6,27 @@ import { View, Text } from 'react-native';
 // rn-elements
 import { Icon } from 'react-native-elements';
 
+// styles
+import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
+
+const stylesheet = createStylesheet(theme => ({
+  container: {
+    padding: theme.spacing * 2,
+    paddingBottom: theme.tabsHeight,
+  },
+}));
+
 class LikedJobsScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Favs',
-    tabBarIcon: () => <Icon name="favorite" color="#FFFFFF" />,
+    tabBarIcon: () => <Icon name="favorite" color={globalTheme.colors.white['200']} />,
   };
 
   componentDidMount() {}
 
   render() {
     return (
-      <View>
+      <View style={stylesheet.container}>
         <Text>LikedJobsScreen</Text>
       </View>
     );
