@@ -19,7 +19,7 @@ const stylesheet = createStylesheet(theme => ({
 class LikedJobsScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Favs',
-    tabBarIcon: () => <Icon name="favorite" color={globalTheme.colors.white['200']} />,
+    tabBarIcon: () => <Icon name="favorite" color={globalTheme.colors.white[200]} />,
   };
 
   componentDidMount() {}

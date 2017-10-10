@@ -8,7 +8,7 @@ import createStylesheet from './../styles/createStylesheet';
 
 const stylesheet = createStylesheet(theme => ({
   container: {
-    borderBottomColor: theme.colors.white['500'],
+    borderBottomColor: theme.colors.white[500],
     borderBottomWidth: 1,
     marginBottom: theme.spacing * 2,
     paddingBottom: theme.spacing * 2,
@@ -19,7 +19,6 @@ const stylesheet = createStylesheet(theme => ({
   },
   detailsChild: {
     flex: 0,
-    minWidth: '50%',
   },
   title: {
     fontSize: theme.fontSize.large,
@@ -32,9 +31,11 @@ const stylesheet = createStylesheet(theme => ({
   },
   website: {
     fontWeight: theme.fontWeight.semibold,
+    minWidth: '65%',
   },
   pubDate: {
     textAlign: 'right',
+    minWidth: '35%',
   },
 }));
 

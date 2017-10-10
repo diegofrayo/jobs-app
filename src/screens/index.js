@@ -39,13 +39,13 @@ export default class App extends React.Component {
       lazy: true,
       animationEnabled: true,
       tabBarOptions: {
-        activeTintColor: theme.colors.white['200'],
-        activeBackgroundColor: theme.colors.black['100'],
-        inactiveTintColor: theme.colors.white['200'],
-        inactiveBackgroundColor: theme.colors.black['200'],
+        activeTintColor: theme.colors.white[200],
+        activeBackgroundColor: theme.colors.black[100],
+        inactiveTintColor: theme.colors.white[200],
+        inactiveBackgroundColor: theme.colors.black[200],
         showLabel: true,
         style: {
-          backgroundColor: theme.colors.black['200'],
+          backgroundColor: theme.colors.black[200],
         },
         labelStyle: {
           fontSize: theme.fontSize.normal,

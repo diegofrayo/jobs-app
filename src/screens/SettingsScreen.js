@@ -19,7 +19,7 @@ const stylesheet = createStylesheet(theme => ({
 class SettingsScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Settings',
-    tabBarIcon: () => <Icon name="settings" color={globalTheme.colors.white['200']} />,
+    tabBarIcon: () => <Icon name="settings" color={globalTheme.colors.white[200]} />,
   };
 
   componentDidMount() {}

@@ -38,7 +38,11 @@
     "publish": "exp publish",
     "lint": "esw -w -c .eslintrc src/**/*.js"
   },
+  "post-commit": [
+    "publish"
+  ],
   "dependencies": {
+    "chroma-js": "^1.3.4",
     "expo": "^20.0.0",
     "lodash": "^4.17.4",
     "qs": "^6.5.1",
@@ -49,6 +53,7 @@
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-duck": "^1.0.2",
+    "redux-persist": "^4.10.1",
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
@@ -60,7 +65,8 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^6.10.3",
-    "eslint-watch": "^3.1.2"
+    "eslint-watch": "^3.1.2",
+    "post-commit": "0.0.1"
   },
   "engines": {
     "node": ">=6.11.0"
