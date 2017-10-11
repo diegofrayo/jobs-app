@@ -1,0 +1,8 @@
+{
+  "dev": {
+    "BACKEND_URL": "http://your-ip:7777"
+  },
+  "prod": {
+    "BACKEND_URL": "https://our-now-deployment.now.sh"
+  },
+}

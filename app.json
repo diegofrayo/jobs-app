@@ -4,14 +4,13 @@
     "description": "React Native app for finding jobs in Armenia, Quindío, Colombia",
     "slug": "jobs-app",
     "privacy": "public",
-    "sdkVersion": "20.0.0",
+    "sdkVersion": "21.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
-      "icon": "./assets/icons/loading-icon.png",
-      "hideExponentText": false
+      "icon": "./assets/icons/loading-icon.png"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]

@@ -26,7 +26,6 @@ const stylesheet = createStylesheet(theme => ({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    justifyContent: 'space-around',
     overflow: 'hidden',
   },
   searchBarInputContainer: {
@@ -38,13 +37,12 @@ const stylesheet = createStylesheet(theme => ({
     width: '100%',
   },
   searchBarButtonContainer: {
-    alignSelf: 'flex-end',
     flexShrink: 0,
   },
   searchBarButton: {
+    backgroundColor: 'transparent',
     height: theme.spacing * 5,
-    padding: 0,
-    paddingLeft: theme.spacing,
+    padding: theme.spacing,
   },
   resultsText: {
     marginTop: theme.spacing * 2,
@@ -58,11 +56,13 @@ const stylesheet = createStylesheet(theme => ({
 class JobsScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Search',
-    tabBarIcon: () => <Icon name="search" color={globalTheme.colors.white[200]} />,
+    tabBarIcon: () => <Icon name="search" color={globalTheme.colors.white[600]} />,
   };
 
+  /* eslint-disable */
   anySearchWasExecuted = false;
   searchInputText = '';
+  /* eslint-enable */
 
   onPressSearch = () => {
     if (this.searchInputText) {
@@ -105,9 +105,12 @@ class JobsScreen extends React.Component {
           <Button
             containerViewStyle={stylesheet.searchBarButtonContainer}
             buttonStyle={stylesheet.searchBarButton}
-            icon={{ name: 'search' }}
+            icon={{
+              name: 'search',
+              color: globalTheme.colors.black[700],
+              style: { marginRight: 0 },
+            }}
             onPress={this.onPressSearch}
-            raised
           />
         </View>
         <Text style={stylesheet.resultsText}>

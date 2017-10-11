@@ -17,17 +17,14 @@
     "name": "Alejandro Baez",
     "email": "nativo.alejandro@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Alejandro Baez",
-      "email": "nativo.alejandro@gmail.com"
-    },
-    {
-      "name": "Diego Rayo",
-      "email": "diegofrayo@gmail.com",
-      "url": "http://diegofrayo.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Alejandro Baez",
+    "email": "nativo.alejandro@gmail.com"
+  }, {
+    "name": "Diego Rayo",
+    "email": "diegofrayo@gmail.com",
+    "url": "http://diegofrayo.com"
+  }],
   "main": "node_modules/expo/AppEntry.js",
   "repository": {
     "type": "git",
@@ -43,13 +40,13 @@
   ],
   "dependencies": {
     "chroma-js": "^1.3.4",
-    "expo": "^20.0.0",
+    "expo": "^21.0.0",
     "lodash": "^4.17.4",
     "qs": "^6.5.1",
     "react": "16.0.0-alpha.12",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
     "react-native-elements": "^0.16.0",
-    "react-navigation": "^1.0.0-beta.11",
+    "react-navigation": "^1.0.0-beta.12",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-duck": "^1.0.2",

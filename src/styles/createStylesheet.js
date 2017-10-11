@@ -21,24 +21,20 @@ export const theme = {
     bold: '700',
   },
   colors: {
-    white: {
-      100: chroma(baseWhite).darken(0.5).hex(),
-      200: chroma(baseWhite).darken(1).hex(),
-      300: chroma(baseWhite).darken(1.5).hex(),
-      400: chroma(baseWhite).darken(2).hex(),
-      500: chroma(baseWhite).darken(2.5).hex(),
-      600: chroma(baseWhite).darken(3).hex(),
-      700: chroma(baseWhite).darken(3.5).hex(),
-    },
-    black: {
-      100: chroma(baseBlack).darken(0.5).hex(),
-      200: chroma(baseBlack).darken(1).hex(),
-      300: chroma(baseBlack).darken(1.5).hex(),
-      400: chroma(baseBlack).darken(2).hex(),
-      500: chroma(baseBlack).darken(2.5).hex(),
-      600: chroma(baseBlack).darken(3).hex(),
-      700: chroma(baseBlack).darken(3.5).hex(),
-    },
+    white: [1, 2, 3, 4, 5, 6, 7].reduce((acum, current) => {
+      // eslint-disable-next-line
+      acum[current * 100] = chroma(baseWhite)
+        .darken(current * 0.3)
+        .hex();
+      return acum;
+    }, {}),
+    black: [1, 2, 3, 4, 5, 6, 7].reduce((acum, current) => {
+      // eslint-disable-next-line
+      acum[current * 100] = chroma(baseBlack)
+        .brighten(current * 0.5)
+        .hex();
+      return acum;
+    }, {}),
   },
 };
 

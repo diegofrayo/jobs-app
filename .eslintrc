@@ -13,12 +13,10 @@
     }
   },
   "globals": {
-    "APP_SETTINGS": true,
+    "__DEV__": true,
     "console": true,
-    "document": true,
     "fetch": true,
-    "Promise": true,
-    "window": true
+    "Promise": true
   },
   "rules": {
     "array-callback-return": 0,

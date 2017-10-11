@@ -1,5 +1,4 @@
-// constants
-const API_URL = 'http://192.168.1.11:7777';
+import { BACKEND_URL } from './../constants';
 
 class HTTP {
   static headers() {
@@ -27,14 +26,14 @@ class HTTP {
   }
 
   static xhr(route, params, verb) {
-    const url = `${API_URL}${route}`;
+    const url = `${BACKEND_URL}${route}`;
     const options = { method: verb };
     options.headers = HTTP.headers();
 
     if (params) options.body = JSON.stringify(params);
 
     return fetch(url, options)
-      .then((response) => {
+      .then(response => {
         const json = response.json();
         if (response.status >= 200 && response.status < 300) {
           return json;
