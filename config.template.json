@@ -4,5 +4,5 @@
   },
   "prod": {
     "BACKEND_URL": "https://our-now-deployment.now.sh"
-  },
+  }
 }

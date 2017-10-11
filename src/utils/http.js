@@ -1,4 +1,4 @@
-import { BACKEND_URL } from './../constants';
+import constants from './../constants';
 
 class HTTP {
   static headers() {
@@ -26,7 +26,7 @@ class HTTP {
   }
 
   static xhr(route, params, verb) {
-    const url = `${BACKEND_URL}${route}`;
+    const url = `${constants.BACKEND_URL}${route}`;
     const options = { method: verb };
     options.headers = HTTP.headers();
 

@@ -6,6 +6,9 @@ import { View, Text } from 'react-native';
 // rn-elements
 import { Icon } from 'react-native-elements';
 
+// constants
+import constants from './../constants';
+
 // styles
 import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
 
@@ -22,12 +25,12 @@ class SettingsScreen extends React.Component {
     tabBarIcon: () => <Icon name="settings" color={globalTheme.colors.white[600]} />,
   };
 
-  componentDidMount() {}
-
   render() {
     return (
       <View style={stylesheet.container}>
         <Text>SettingsScreen</Text>
+        <Text>ENV: {__DEV__ ? 'Development' : 'Production'}</Text>
+        <Text>HOST: {constants.BACKEND_URL}</Text>
       </View>
     );
   }
