@@ -3,9 +3,10 @@ import React from 'react';
 import { View, FlatList, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { TextInput, Button as RNButton } from 'react-native';
 
 // rn-elements
-import { Button, FormInput, Icon, Text } from 'react-native-elements';
+import { Button, FormInput, Icon, Text, SearchBar } from 'react-native-elements';
 
 // components
 import JobItem from './../components/Job';
@@ -95,13 +96,6 @@ class JobsScreen extends React.Component {
     return (
       <View style={stylesheet.container}>
         <View style={stylesheet.searchBarContainer}>
-          <FormInput
-            containerStyle={stylesheet.searchBarInputContainer}
-            inputStyle={stylesheet.searchBarInput}
-            onChangeText={this.onChangeInput}
-            onSubmitEditing={this.onPressSearch}
-            placeholder="Search a job..."
-          />
           <Button
             containerViewStyle={stylesheet.searchBarButtonContainer}
             buttonStyle={stylesheet.searchBarButton}
@@ -112,7 +106,43 @@ class JobsScreen extends React.Component {
             }}
             onPress={this.onPressSearch}
           />
+          <FormInput
+            containerStyle={stylesheet.searchBarInputContainer}
+            inputStyle={stylesheet.searchBarInput}
+            onChangeText={this.onChangeInput}
+            onSubmitEditing={this.onPressSearch}
+            placeholder="My own search bar with RNE"
+          />
         </View>
+        <View
+          style={{
+            backgroundColor: globalTheme.colors.white[100],
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'nowrap',
+            marginBottom: 10,
+            marginTop: 10,
+          }}
+        >
+          <Icon
+            name="search"
+            size={20}
+            color={globalTheme.colors.black[700]}
+            style={{
+              flex: 0,
+              height: 40,
+              paddingBottom: 10,
+              paddingLeft: 10,
+              paddingRight: 10,
+              paddingTop: 10,
+            }}
+          />
+          <TextInput
+            placeholder="My own search bar with RN"
+            style={{ flex: 1, height: 40, fontSize: 14 }}
+          />
+        </View>
+        <SearchBar round lightTheme placeholder="RNE Searchbar" />
         <Text style={stylesheet.resultsText}>
           {this.renderResultsText(results, this.searchInputText)}
         </Text>
