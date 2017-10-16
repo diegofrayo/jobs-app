@@ -11,15 +11,15 @@ import createStylesheet, { theme as globalTheme } from './../styles/createStyles
 
 const stylesheet = createStylesheet(theme => ({
   container: {
-    padding: theme.spacing * 2,
+    padding: theme.spacing[2],
     paddingBottom: theme.tabsHeight,
   },
 }));
 
 class LikedJobsScreen extends React.Component {
   static navigationOptions = {
-    tabBarLabel: 'Favs',
-    tabBarIcon: () => <Icon name="favorite" color={globalTheme.colors.white[600]} />,
+    tabBarLabel: 'Favoritos',
+    tabBarIcon: () => <Icon name="favorite" color={globalTheme.color.white[600]} />,
   };
 
   componentDidMount() {}

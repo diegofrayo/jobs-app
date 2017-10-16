@@ -1,9 +1,11 @@
 // npm libs
 import React from 'react';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import { TabNavigator } from 'react-navigation';
 import { View, Dimensions } from 'react-native';
 import { Constants } from 'expo';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
 
 // screens
 import JobsScreen from './JobsScreen';
@@ -11,7 +13,10 @@ import LikedJobsScreen from './LikedJobsScreen';
 import SettingsScreen from './SettingsScreen';
 
 // redux
-import store from './../redux';
+// import store from './../redux';
+
+// constants
+import constants from './../constants';
 
 // styles
 import createStylesheet, { theme } from './../styles/createStylesheet';
@@ -26,7 +31,7 @@ const stylesheet = createStylesheet(() => ({
   },
 }));
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   mainNavigator = TabNavigator(
     {
       Home: { screen: JobsScreen },
@@ -49,14 +54,29 @@ export default class App extends React.Component {
     },
   );
 
+  client = new ApolloClient({
+    networkInterface: createNetworkInterface({
+      uri: `${constants.BACKEND_URL}/graphql`,
+    }),
+  });
+
   render() {
     const MainNavigator = this.mainNavigator;
+    // return (
+    //   <ApolloProvider client={this.client}>
+    //     <Provider store={store}>
+    //       <View style={stylesheet.viewContainer}>
+    //         <MainNavigator style={stylesheet.mainNavigator} />
+    //       </View>
+    //     </Provider>
+    //   </ApolloProvider>
+    // );
     return (
-      <Provider store={store}>
+      <ApolloProvider client={this.client}>
         <View style={stylesheet.viewContainer}>
           <MainNavigator style={stylesheet.mainNavigator} />
         </View>
-      </Provider>
+      </ApolloProvider>
     );
   }
 }

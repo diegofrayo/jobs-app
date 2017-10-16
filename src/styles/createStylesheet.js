@@ -3,11 +3,20 @@
 import { StyleSheet } from 'react-native';
 import chroma from 'chroma-js';
 
+const tones = [100, 200, 300, 400, 500, 600, 700];
+const baseBlack = '#555555';
+const baseBlue = '#4787EE';
 const baseWhite = '#FFFFFF';
-const baseBlack = '#000000';
 
 export const theme = {
-  spacing: 8,
+  spacing: [1, 2, 3, 4, 5].reduce(
+    (acum, current) => {
+      // eslint-disable-next-line
+      acum[current] = current * acum.base;
+      return acum;
+    },
+    { base: 8 },
+  ),
   tabsHeight: 50,
   fontSize: {
     small: 14,
@@ -20,18 +29,25 @@ export const theme = {
     semibold: '500',
     bold: '700',
   },
-  colors: {
-    white: [1, 2, 3, 4, 5, 6, 7].reduce((acum, current) => {
+  color: {
+    black: tones.reduce((acum, current, index) => {
       // eslint-disable-next-line
-      acum[current * 100] = chroma(baseWhite)
-        .darken(current * 0.3)
+      acum[current] = chroma(baseBlack)
+        .darken(index * 0.3)
         .hex();
       return acum;
     }, {}),
-    black: [1, 2, 3, 4, 5, 6, 7].reduce((acum, current) => {
+    blue: tones.reduce((acum, current, index) => {
       // eslint-disable-next-line
-      acum[current * 100] = chroma(baseBlack)
-        .brighten(current * 0.5)
+      acum[current] = chroma(baseBlue)
+        .darken(index * 0.3)
+        .hex();
+      return acum;
+    }, {}),
+    white: tones.reduce((acum, current, index) => {
+      // eslint-disable-next-line
+      acum[current] = chroma(baseWhite)
+        .darken(index * 0.3)
         .hex();
       return acum;
     }, {}),
