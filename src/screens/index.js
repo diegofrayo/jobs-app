@@ -2,8 +2,7 @@
 import React from 'react';
 // import { Provider } from 'react-redux';
 import { TabNavigator } from 'react-navigation';
-import { View, Dimensions } from 'react-native';
-import { Constants } from 'expo';
+import { Platform, View } from 'react-native';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
@@ -19,17 +18,45 @@ import SettingsScreen from './SettingsScreen';
 import constants from './../constants';
 
 // styles
-import createStylesheet, { theme } from './../styles/createStylesheet';
+import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
 
-const stylesheet = createStylesheet(() => ({
+const stylesheet = createStylesheet(theme => ({
   viewContainer: {
     flex: 1,
-    paddingTop: Constants.statusBarHeight,
+    paddingTop: theme.statusBarHeight,
   },
   mainNavigator: {
-    width: Dimensions.get('window').width,
+    width: theme.screenWidth,
   },
 }));
+
+const tabBarOptions = Platform.select({
+  android: {
+    activeTintColor: globalTheme.tabBar.activeTintColor,
+    inactiveTintColor: globalTheme.tabBar.inactiveTintColor,
+    showIcon: true,
+    scrollEnabled: false,
+    tabStyle: {
+      padding: 0,
+    },
+    labelStyle: {
+      fontSize: globalTheme.fontSize.xsmall - 2,
+    },
+    indicatorStyle: {
+      backgroundColor: globalTheme.tabBar.activeTintColor,
+    },
+    style: {
+      backgroundColor: globalTheme.tabBar.backgroundColor,
+      borderTopColor: globalTheme.tabBar.borderTopColor,
+      borderTopWidth: globalTheme.tabBar.borderTopWidth,
+    },
+  },
+  ios: {
+    labelStyle: {
+      fontSize: globalTheme.fontSize.normal,
+    },
+  },
+});
 
 export default class App extends React.PureComponent {
   mainNavigator = TabNavigator(
@@ -45,11 +72,7 @@ export default class App extends React.PureComponent {
       animationEnabled: true,
       tabBarOptions: {
         showLabel: true,
-        style: {},
-        labelStyle: {
-          fontSize: theme.fontSize.normal,
-        },
-        tabStyle: {},
+        ...tabBarOptions,
       },
     },
   );

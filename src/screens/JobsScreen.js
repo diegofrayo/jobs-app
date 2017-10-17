@@ -47,6 +47,9 @@ const stylesheet = createStylesheet(theme => ({
     marginTop: theme.spacing[2],
     marginBottom: theme.spacing[2],
   },
+  jobsList: {
+    paddingRight: theme.spacing.base,
+  },
 }));
 
 const searchJobsQuery = gql`
@@ -85,15 +88,11 @@ class JobsScreen extends React.Component {
     if (this.searchInputText) {
       this.anySearchWasExecuted = true;
       this.props.data.refetch({ query: this.searchInputText });
-      Keyboard.dismiss();
     }
+    Keyboard.dismiss();
   };
 
-  onChangeInput = text => {
-    this.searchInputText = text;
-  };
-
-  keyExtractor = (item, index) => `job-item-${index}`;
+  onChangeInput = text => (this.searchInputText = text);
 
   renderItem = ({ item }) => <JobItem {...item} />;
 
@@ -117,7 +116,12 @@ class JobsScreen extends React.Component {
           <Text style={stylesheet.resultsText}>
             Se encontraron {jobs.length} resultados para {this.searchInputText}
           </Text>
-          <FlatList data={jobs} keyExtractor={this.keyExtractor} renderItem={this.renderItem} />
+          <FlatList
+            data={jobs}
+            keyExtractor={JobItem.keyExtractor}
+            renderItem={this.renderItem}
+            style={stylesheet.jobsList}
+          />
         </FlexContainer>
       );
     }

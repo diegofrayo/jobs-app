@@ -21,13 +21,13 @@ const stylesheet = createStylesheet(theme => ({
     flex: 0,
   },
   title: {
-    color: theme.color.black[300],
+    color: theme.color.black[500],
     fontSize: theme.fontSize.large,
     fontWeight: theme.fontWeight.bold,
     marginBottom: theme.spacing.base,
   },
   description: {
-    color: theme.color.black[200],
+    color: theme.color.black[700],
     fontSize: theme.fontSize.medium,
     marginBottom: theme.spacing.base,
   },
@@ -40,11 +40,26 @@ const stylesheet = createStylesheet(theme => ({
   pubDate: {
     fontStyle: 'italic',
     minWidth: '35%',
+    paddingRight: theme.spacing.base,
     textAlign: 'right',
   },
 }));
 
 class Job extends React.PureComponent {
+  static propTypes = {
+    description: PropTypes.string.isRequired,
+    pubDate: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    pubDate: new Date().toDateString(),
+  };
+
+  static keyExtractor = (item, index) => `job-item-${index}`;
+
   openLink = () => {
     Linking.openURL(this.props.url).catch(err => {
       Alert.alert(
@@ -69,17 +84,5 @@ class Job extends React.PureComponent {
     );
   }
 }
-
-Job.propTypes = {
-  description: PropTypes.string.isRequired,
-  pubDate: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired,
-};
-
-Job.defaultProps = {
-  pubDate: new Date().toDateString(),
-};
 
 export default Job;

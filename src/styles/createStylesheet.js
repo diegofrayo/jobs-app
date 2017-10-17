@@ -1,14 +1,27 @@
 /* eslint quote-props: "off" */
 
+import { View, Dimensions } from 'react-native';
+import { Constants } from 'expo';
 import { StyleSheet } from 'react-native';
 import chroma from 'chroma-js';
 
 const tones = [100, 200, 300, 400, 500, 600, 700];
-const baseBlack = '#555555';
+const baseBlack = '#777777';
 const baseBlue = '#4787EE';
 const baseWhite = '#FFFFFF';
 
 export const theme = {
+  tabBar: {
+    activeTintColor: '#3478F6',
+    inactiveTintColor: '#929292',
+    backgroundColor: '#F7F7F7',
+    borderTopColor: 'rgba(0, 0, 0, .3)',
+    borderTopWidth: 0.5,
+    flexDirection: 'row',
+    height: 50,
+  },
+  statusBarHeight: Constants.statusBarHeight,
+  screenWidth: Dimensions.get('window').width,
   spacing: [1, 2, 3, 4, 5].reduce(
     (acum, current) => {
       // eslint-disable-next-line
@@ -17,12 +30,13 @@ export const theme = {
     },
     { base: 8 },
   ),
-  tabsHeight: 50,
   fontSize: {
+    xsmall: 12,
     small: 14,
     normal: 16,
     medium: 18,
     large: 20,
+    xlarge: 22,
   },
   fontWeight: {
     normal: '400',

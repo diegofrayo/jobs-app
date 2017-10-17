@@ -109,8 +109,4 @@ class SettingsScreen extends React.Component {
   }
 }
 
-SettingsScreen.propTypes = {};
-
-SettingsScreen.defaultProps = {};
-
 export default SettingsScreen;

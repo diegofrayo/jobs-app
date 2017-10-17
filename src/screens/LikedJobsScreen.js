@@ -12,7 +12,6 @@ import createStylesheet, { theme as globalTheme } from './../styles/createStyles
 const stylesheet = createStylesheet(theme => ({
   container: {
     padding: theme.spacing[2],
-    paddingBottom: theme.tabsHeight,
   },
 }));
 
@@ -32,9 +31,5 @@ class LikedJobsScreen extends React.Component {
     );
   }
 }
-
-LikedJobsScreen.propTypes = {};
-
-LikedJobsScreen.defaultProps = {};
 
 export default LikedJobsScreen;
