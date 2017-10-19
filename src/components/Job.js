@@ -98,7 +98,7 @@ class Job extends React.PureComponent {
     return (
       <View>
         <TouchableOpacity
-          activeOpacity={0.5}
+          activeOpacity={0.3}
           onLongPress={this.openMenu}
           onPress={this.openLink}
           style={stylesheet.container}

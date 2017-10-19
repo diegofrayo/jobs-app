@@ -49,13 +49,15 @@ class InfoScreen extends React.Component {
     return (
       <View style={stylesheet.container}>
         <FlexContainer>
-          <CustomText>ENV: {__DEV__ ? 'Development' : 'Production'}</CustomText>
-          <CustomText>HOST: {constants.BACKEND_URL}</CustomText>
+          {/*
+            <CustomText>ENV: {__DEV__ ? 'Development' : 'Production'}</CustomText>
+            <CustomText>HOST: {constants.BACKEND_URL}</CustomText>
+          */}
           <FlexContainer>
-            <Icon name="info" color={globalTheme.color.black[400]} size={150} />
+            <Icon name="code" color={globalTheme.color.black[400]} size={150} />
             <CustomText style={stylesheet.developedBy}>Desarrollado por</CustomText>
             <CustomText bold onPress={this.openLink} style={stylesheet.heydev}>
-              @heydev
+              Hey Dev!
             </CustomText>
           </FlexContainer>
         </FlexContainer>

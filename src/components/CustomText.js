@@ -16,7 +16,7 @@ class CustomText extends React.PureComponent {
 
   static defaultProps = {
     bold: false,
-    onPress: () => {},
+    onPress: undefined,
     style: {},
   };
 
@@ -32,7 +32,10 @@ class CustomText extends React.PureComponent {
     const { bold, children, onPress, style } = this.props;
     if (bold) this.stylesheet.text.fontFamily = 'open-sans-bold';
     return (
-      <Text style={[createStylesheet(() => this.stylesheet).text, style]} onPress={onPress}>
+      <Text
+        style={[createStylesheet(() => this.stylesheet).text, style]}
+        onPress={onPress}
+      >
         {children}
       </Text>
     );
