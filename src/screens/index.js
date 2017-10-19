@@ -5,11 +5,12 @@ import { TabNavigator } from 'react-navigation';
 import { Platform, View } from 'react-native';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
+import { Font } from 'expo';
 
 // screens
 import JobsScreen from './JobsScreen';
 import LikedJobsScreen from './LikedJobsScreen';
-import SettingsScreen from './SettingsScreen';
+import InfoScreen from './InfoScreen';
 
 // redux
 // import store from './../redux';
@@ -58,12 +59,13 @@ const tabBarOptions = Platform.select({
   },
 });
 
-export default class App extends React.PureComponent {
+export default class App extends React.Component {
+  /* eslint-disable */
   mainNavigator = TabNavigator(
     {
       Home: { screen: JobsScreen },
       LikedJobs: { screen: LikedJobsScreen },
-      Settings: { screen: SettingsScreen },
+      Info: { screen: InfoScreen },
     },
     {
       tabBarPosition: 'bottom',
@@ -83,6 +85,19 @@ export default class App extends React.PureComponent {
     }),
   });
 
+  state = {
+    isReady: false,
+  };
+
+  componentDidMount() {
+    Font.loadAsync({
+      'open-sans-bold': require('./../../assets/fonts/OpenSans-Bold.ttf'),
+      'open-sans': require('./../../assets/fonts/OpenSans-Light.ttf'),
+    });
+    this.setState({ isReady: true });
+  }
+  /* eslint-enable */
+
   render() {
     const MainNavigator = this.mainNavigator;
     // return (
@@ -94,12 +109,12 @@ export default class App extends React.PureComponent {
     //     </Provider>
     //   </ApolloProvider>
     // );
-    return (
+    return this.state.isReady ? (
       <ApolloProvider client={this.client}>
         <View style={stylesheet.viewContainer}>
           <MainNavigator style={stylesheet.mainNavigator} />
         </View>
       </ApolloProvider>
-    );
+    ) : null;
   }
 }

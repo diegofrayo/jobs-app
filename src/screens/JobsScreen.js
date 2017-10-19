@@ -6,9 +6,10 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 // rn-elements
-import { Icon, Text } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 
 // components
+import CustomText from './../components/CustomText';
 import FlexContainer from './../components/FlexContainer';
 import JobItem from './../components/Job';
 
@@ -30,6 +31,7 @@ const stylesheet = createStylesheet(theme => ({
     overflow: 'hidden',
   },
   searchBarInput: {
+    borderBottomWidth: 0,
     flex: 1,
     fontSize: theme.fontSize.small,
     height: theme.spacing[5],
@@ -44,11 +46,15 @@ const stylesheet = createStylesheet(theme => ({
   },
   resultsText: {
     alignSelf: 'flex-start',
-    marginTop: theme.spacing[2],
     marginBottom: theme.spacing[2],
+    marginTop: theme.spacing[2],
   },
   jobsList: {
     paddingRight: theme.spacing.base,
+  },
+  separator: {
+    backgroundColor: theme.color.white[200],
+    height: 1,
   },
 }));
 
@@ -92,32 +98,41 @@ class JobsScreen extends React.Component {
     Keyboard.dismiss();
   };
 
-  onChangeInput = text => (this.searchInputText = text);
+  onChangeInput = text => {
+    this.searchInputText = text;
+  };
+
+  renderSeparator = () => <View style={stylesheet.separator} />;
 
   renderItem = ({ item }) => <JobItem {...item} />;
 
   renderContent = ({ loading, error, jobs }) => {
     if (this.anySearchWasExecuted) {
       if (loading) {
-        return <Text>Cargando...</Text>;
+        return <CustomText>Cargando...</CustomText>;
       }
 
       if (error) {
         console.log(error);
-        return <Text>Lo sentimos, ha ocurrido un error, inténtalo de nuevo en un momento</Text>;
+        return (
+          <CustomText>
+            Lo sentimos, ha ocurrido un error, inténtalo de nuevo en un momento
+          </CustomText>
+        );
       }
 
       if (!jobs.length) {
-        return <Text>No hay resultados para {this.searchInputText}</Text>;
+        return <CustomText>No hay resultados para {this.searchInputText}</CustomText>;
       }
 
       return (
         <FlexContainer>
-          <Text style={stylesheet.resultsText}>
+          <CustomText style={stylesheet.resultsText}>
             Se encontraron {jobs.length} resultados para {this.searchInputText}
-          </Text>
+          </CustomText>
           <FlatList
             data={jobs}
+            ItemSeparatorComponent={this.renderSeparator}
             keyExtractor={JobItem.keyExtractor}
             renderItem={this.renderItem}
             style={stylesheet.jobsList}
@@ -141,10 +156,15 @@ class JobsScreen extends React.Component {
             style={stylesheet.searchBarButton}
           />
           <TextInput
+            autoCorrect={false}
+            clearButtonMode="while-editing"
+            multiline={false}
             onChangeText={this.onChangeInput}
             onSubmitEditing={this.onPressSearch}
             placeholder="Busca un trabajo..."
+            returnKeyType="search"
             style={stylesheet.searchBarInput}
+            underlineColorAndroid="transparent"
           />
         </View>
         <FlexContainer>{this.renderContent(this.props.data)}</FlexContainer>

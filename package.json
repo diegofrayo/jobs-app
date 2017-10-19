@@ -44,7 +44,6 @@
     "expo": "^21.0.0",
     "graphql-tag": "^2.4.2",
     "lodash": "^4.17.4",
-    "qs": "^6.5.1",
     "react": "16.0.0-alpha.12",
     "react-apollo": "^1.4.16",
     "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
@@ -58,6 +57,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-remove-console": "^6.8.5",
     "eslint": "^4.8.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-prettier": "^2.6.0",

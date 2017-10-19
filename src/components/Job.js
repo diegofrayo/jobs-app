@@ -1,17 +1,19 @@
 // npm libs
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, Alert, Linking, TouchableOpacity, View } from 'react-native';
+import { Share, TouchableOpacity, View } from 'react-native';
+import { WebBrowser } from 'expo';
+
+// components
+import CustomText from './CustomText';
 
 // styles
 import createStylesheet from './../styles/createStylesheet';
 
 const stylesheet = createStylesheet(theme => ({
   container: {
-    borderBottomColor: theme.color.white[200],
-    borderBottomWidth: 1,
-    marginBottom: theme.spacing[2],
     paddingBottom: theme.spacing[2],
+    paddingTop: theme.spacing.base,
   },
   detailsContainer: {
     flex: 1,
@@ -33,12 +35,11 @@ const stylesheet = createStylesheet(theme => ({
   },
   website: {
     color: theme.color.blue[300],
-    fontWeight: theme.fontWeight.semibold,
     minWidth: '65%',
     textDecorationLine: 'underline',
   },
   pubDate: {
-    fontStyle: 'italic',
+    fontSize: theme.fontSize.small,
     minWidth: '35%',
     paddingRight: theme.spacing.base,
     textAlign: 'right',
@@ -61,6 +62,9 @@ class Job extends React.PureComponent {
   static keyExtractor = (item, index) => `job-item-${index}`;
 
   openLink = () => {
+    // Open a default browser
+    /*
+    import { Alert, Linking } from 'react-native';
     Linking.openURL(this.props.url).catch(err => {
       Alert.alert(
         'Error',
@@ -68,19 +72,49 @@ class Job extends React.PureComponent {
       );
       console.error('An error occurred', err);
     });
+    */
+
+    WebBrowser.openBrowserAsync(this.props.url);
+  };
+
+  openMenu = () => {
+    Share.share(
+      {
+        title: 'Comparte esta oferta de trabajo',
+        message: `Hola, te invito a que revises esta oferta de trabajo abriendo el siguiente enlace ${this
+          .props.url}`,
+        url: this.props.url,
+      },
+      {
+        dialogTitle: 'Comparte esta oferta de trabajo',
+      },
+    ).then(response => {
+      console.log(response);
+    });
   };
 
   render() {
     const { title, pubDate, description, website } = this.props;
     return (
-      <TouchableOpacity onPress={this.openLink} style={stylesheet.container}>
-        <Text style={stylesheet.title}>{title}</Text>
-        <Text style={stylesheet.description}>{description}</Text>
-        <View style={stylesheet.detailsContainer}>
-          <Text style={[stylesheet.detailsChild, stylesheet.website]}>{website}</Text>
-          <Text style={[stylesheet.detailsChild, stylesheet.pubDate]}>{pubDate}</Text>
-        </View>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity
+          activeOpacity={0.5}
+          onLongPress={this.openMenu}
+          onPress={this.openLink}
+          style={stylesheet.container}
+        >
+          <CustomText bold style={stylesheet.title}>{title}</CustomText>
+          <CustomText style={stylesheet.description}>{description}</CustomText>
+          <View style={stylesheet.detailsContainer}>
+            <CustomText style={[stylesheet.detailsChild, stylesheet.website]} bold>
+              {website}
+            </CustomText>
+            <CustomText style={[stylesheet.detailsChild, stylesheet.pubDate]}>
+              {pubDate}
+            </CustomText>
+          </View>
+        </TouchableOpacity>
+      </View>
     );
   }
 }

@@ -1,11 +1,10 @@
 /* eslint quote-props: "off" */
 
-import { View, Dimensions } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { Constants } from 'expo';
-import { StyleSheet } from 'react-native';
 import chroma from 'chroma-js';
 
-const tones = [100, 200, 300, 400, 500, 600, 700];
+const tones = [100, 200, 300, 400, 500, 600, 700, 800];
 const baseBlack = '#777777';
 const baseBlue = '#4787EE';
 const baseWhite = '#FFFFFF';

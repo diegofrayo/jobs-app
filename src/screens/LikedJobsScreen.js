@@ -1,17 +1,23 @@
 // npm libs
 import React from 'react';
-import { View, Text } from 'react-native';
-// import PropTypes from 'prop-types';
+import { View } from 'react-native';
 
 // rn-elements
 import { Icon } from 'react-native-elements';
+
+// components
+import CustomText from './../components/CustomText';
+import FlexContainer from './../components/FlexContainer';
 
 // styles
 import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
 
 const stylesheet = createStylesheet(theme => ({
   container: {
+    display: 'flex',
+    flex: 1,
     padding: theme.spacing[2],
+    paddingBottom: 0,
   },
 }));
 
@@ -21,12 +27,12 @@ class LikedJobsScreen extends React.Component {
     tabBarIcon: () => <Icon name="favorite" color={globalTheme.color.white[600]} />,
   };
 
-  componentDidMount() {}
-
   render() {
     return (
       <View style={stylesheet.container}>
-        <Text>LikedJobsScreen</Text>
+        <FlexContainer>
+          <CustomText>Ofertas de trabajo favoritas</CustomText>
+        </FlexContainer>
       </View>
     );
   }

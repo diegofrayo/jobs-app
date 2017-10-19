@@ -10,10 +10,12 @@
     "primaryColor": "#cccccc",
     "icon": "./assets/icons/app-icon.png",
     "loading": {
-      "icon": "./assets/icons/loading-icon.png"
+      "backgroundColor": "#F9F9F9",
+      "icon": "./assets/icons/app-icon.png",
+      "hideExponentText": true
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "mp4"]
+      "assetExts": ["ttf"]
     },
     "ios": {
       "supportsTablet": true
