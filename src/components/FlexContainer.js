@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
 class FlexContainer extends React.PureComponent {
+
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   };

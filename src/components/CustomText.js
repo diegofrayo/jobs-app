@@ -7,6 +7,7 @@ import { Text } from 'react-native';
 import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
 
 class CustomText extends React.PureComponent {
+
   static propTypes = {
     bold: PropTypes.bool,
     children: PropTypes.any.isRequired, // eslint-disable-line

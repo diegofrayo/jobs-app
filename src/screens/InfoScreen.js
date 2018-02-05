@@ -10,9 +10,6 @@ import { Icon } from 'react-native-elements';
 import CustomText from './../components/CustomText';
 import FlexContainer from './../components/FlexContainer';
 
-// constants
-import constants from './../constants';
-
 // styles
 import createStylesheet, { theme as globalTheme } from './../styles/createStylesheet';
 
@@ -42,22 +39,18 @@ class InfoScreen extends React.Component {
   };
 
   openLink = () => {
-    WebBrowser.openBrowserAsync('https://heydev.now.sh/');
+    WebBrowser.openBrowserAsync('http://diegofrayo.com');
   };
 
   render() {
     return (
       <View style={stylesheet.container}>
         <FlexContainer>
-          {/*
-            <CustomText>ENV: {__DEV__ ? 'Development' : 'Production'}</CustomText>
-            <CustomText>HOST: {constants.BACKEND_URL}</CustomText>
-          */}
           <FlexContainer>
             <Icon name="code" color={globalTheme.color.black[400]} size={150} />
             <CustomText style={stylesheet.developedBy}>Desarrollado por</CustomText>
             <CustomText bold onPress={this.openLink} style={stylesheet.heydev}>
-              Hey Dev!
+              Diego Rayo
             </CustomText>
           </FlexContainer>
         </FlexContainer>

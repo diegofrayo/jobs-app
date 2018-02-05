@@ -47,6 +47,7 @@ const stylesheet = createStylesheet(theme => ({
 }));
 
 class Job extends React.PureComponent {
+
   static propTypes = {
     description: PropTypes.string.isRequired,
     pubDate: PropTypes.string,
@@ -62,6 +63,7 @@ class Job extends React.PureComponent {
   static keyExtractor = (item, index) => `job-item-${index}`;
 
   openLink = () => {
+
     // Open a default browser
     /*
     import { Alert, Linking } from 'react-native';
@@ -88,9 +90,7 @@ class Job extends React.PureComponent {
       {
         dialogTitle: 'Comparte esta oferta de trabajo',
       },
-    ).then(response => {
-      console.log(response);
-    });
+    );
   };
 
   render() {

@@ -1,6 +1,5 @@
 // npm libs
 import React from 'react';
-// import { Provider } from 'react-redux';
 import { TabNavigator } from 'react-navigation';
 import { Platform, View } from 'react-native';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
@@ -9,11 +8,7 @@ import { Font } from 'expo';
 
 // screens
 import JobsScreen from './JobsScreen';
-import LikedJobsScreen from './LikedJobsScreen';
 import InfoScreen from './InfoScreen';
-
-// redux
-// import store from './../redux';
 
 // constants
 import constants from './../constants';
@@ -60,11 +55,16 @@ const tabBarOptions = Platform.select({
 });
 
 export default class App extends React.Component {
-  /* eslint-disable */
+
+  client = new ApolloClient({
+    networkInterface: createNetworkInterface({
+      uri: `${constants.BACKEND_URL}/graphql`,
+    }),
+  });
+
   mainNavigator = TabNavigator(
     {
       Home: { screen: JobsScreen },
-      LikedJobs: { screen: LikedJobsScreen },
       Info: { screen: InfoScreen },
     },
     {
@@ -79,36 +79,21 @@ export default class App extends React.Component {
     },
   );
 
-  client = new ApolloClient({
-    networkInterface: createNetworkInterface({
-      uri: `${constants.BACKEND_URL}/graphql`,
-    }),
-  });
-
   state = {
     isReady: false,
   };
 
   componentDidMount() {
-    Font.loadAsync({
-      'open-sans-bold': require('./../../assets/fonts/OpenSans-Bold.ttf'),
-      'open-sans': require('./../../assets/fonts/OpenSans-Light.ttf'),
-    });
-    this.setState({ isReady: true });
+    Font
+      .loadAsync({
+        'open-sans-bold': require('./../../assets/fonts/OpenSans-Bold.ttf'),
+        'open-sans': require('./../../assets/fonts/OpenSans-Light.ttf'),
+      })
+      .then(() => this.setState({ isReady: true }));
   }
-  /* eslint-enable */
 
   render() {
     const MainNavigator = this.mainNavigator;
-    // return (
-    //   <ApolloProvider client={this.client}>
-    //     <Provider store={store}>
-    //       <View style={stylesheet.viewContainer}>
-    //         <MainNavigator style={stylesheet.mainNavigator} />
-    //       </View>
-    //     </Provider>
-    //   </ApolloProvider>
-    // );
     return this.state.isReady ? (
       <ApolloProvider client={this.client}>
         <View style={stylesheet.viewContainer}>

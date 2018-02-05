@@ -5,23 +5,21 @@
   "keywords": [
     "react",
     "react native",
-    "expo"
+    "expo",
+    "graphql",
+    "apollo-client"
   ],
-  "homepage": "https://github.com/hey-dev/jobs-app#readme",
+  "homepage": "https://github.com/diegofrayo/jobs-app#readme",
   "bugs": {
-    "email": "workspace.armenia@gmail.com",
-    "url": "https://github.com/hey-dev/jobs-app/issues"
+    "email": "diegofrayo@gmail.com",
+    "url": "https://github.com/diegofrayo/jobs-app/issues"
   },
   "license": "ISC",
   "author": {
-    "name": "Alejandro Baez",
-    "email": "nativo.alejandro@gmail.com"
+    "name": "Dieog Rayo",
+    "email": "diegofrayo@gmail.com"
   },
   "contributors": [
-    {
-      "name": "Alejandro Baez",
-      "email": "nativo.alejandro@gmail.com"
-    },
     {
       "name": "Diego Rayo",
       "email": "diegofrayo@gmail.com",
@@ -31,7 +29,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hey-dev/jobs-app.git"
+    "url": "git+https://github.com/diegofrayo/jobs-app.git"
   },
   "scripts": {
     "start": "exp start --lan --dev",
@@ -43,29 +41,21 @@
     "chroma-js": "^1.3.4",
     "expo": "^21.0.0",
     "graphql-tag": "^2.4.2",
-    "lodash": "^4.17.4",
     "react": "16.0.0-alpha.12",
     "react-apollo": "^1.4.16",
     "react-native": "https://github.com/expo/react-native/archive/sdk-21.0.2.tar.gz",
     "react-native-elements": "^0.16.0",
-    "react-navigation": "^1.0.0-beta.12",
-    "react-redux": "^5.0.6",
-    "redux": "^3.7.2",
-    "redux-duck": "^1.0.2",
-    "redux-persist": "^4.10.1",
-    "redux-thunk": "^2.2.0"
+    "react-navigation": "^1.0.0-beta.12"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.1",
-    "babel-plugin-transform-remove-console": "^6.8.5",
-    "eslint": "^4.8.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-remove-console": "^6.9.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^14.1.0",
-    "eslint-config-prettier": "^2.6.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^6.10.3",
-    "eslint-watch": "^3.1.2"
+    "eslint-watch": "^3.1.3"
   },
   "engines": {
     "node": ">=6.11.0"

@@ -71,6 +71,7 @@ const searchJobsQuery = gql`
 `;
 
 class JobsScreen extends React.Component {
+
   static navigationOptions = {
     tabBarLabel: 'Buscar',
     tabBarIcon: () => <Icon name="search" color={globalTheme.color.white[600]} />,
@@ -85,10 +86,8 @@ class JobsScreen extends React.Component {
     }).isRequired,
   };
 
-  /* eslint-disable */
   anySearchWasExecuted = false;
   searchInputText = '';
-  /* eslint-enable */
 
   onPressSearch = () => {
     if (this.searchInputText) {
@@ -98,7 +97,7 @@ class JobsScreen extends React.Component {
     Keyboard.dismiss();
   };
 
-  onChangeInput = text => {
+  onChangeInput = (text) => {
     this.searchInputText = text;
   };
 
@@ -107,13 +106,13 @@ class JobsScreen extends React.Component {
   renderItem = ({ item }) => <JobItem {...item} />;
 
   renderContent = ({ loading, error, jobs }) => {
+
     if (this.anySearchWasExecuted) {
       if (loading) {
         return <CustomText>Cargando...</CustomText>;
       }
 
       if (error) {
-        console.log(error);
         return (
           <CustomText>
             Lo sentimos, ha ocurrido un error, inténtalo de nuevo en un momento
