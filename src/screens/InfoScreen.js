@@ -39,7 +39,7 @@ class InfoScreen extends React.Component {
   };
 
   openLink = () => {
-    WebBrowser.openBrowserAsync('http://diegofrayo.com');
+    WebBrowser.openBrowserAsync('https://diegofrayo.com');
   };
 
   render() {
